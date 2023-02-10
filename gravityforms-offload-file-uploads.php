@@ -11,7 +11,7 @@
  * Text Domain: vital
  */
 if (!defined('ABSPATH')) {
-	exit;
+    exit;
 }
 
 define('GF_SIMPLE_ADDON_VERSION', '2.1');
@@ -20,22 +20,22 @@ add_action('gform_loaded', ['GF_Offload_File_Uploads_Addon', 'load'], 5);
 
 class GF_Offload_File_Uploads_Addon {
 
-	public static function load() {
+    public static function load() {
 
-		if (!method_exists('GFForms', 'include_addon_framework')) {
-			return;
-		}
+        if (!method_exists('GFForms', 'include_addon_framework')) {
+            return;
+        }
 
-		if (!class_exists('S3')) {
-			require_once('includes/S3.php');
-		}
+        if (!class_exists('S3')) {
+            require_once('includes/S3.php');
+        }
 
-		require_once('class-gravityforms-offload-file-uploads.php');
+        require_once('class-gravityforms-offload-file-uploads.php');
 
-		GFAddOn::register('GF_Offload_File_Uploads');
-	}
+        GFAddOn::register('GF_Offload_File_Uploads');
+    }
 }
 
 function gf_simple_addon() {
-	return GF_Offload_S3_Uploads::get_instance();
+    return GF_Offload_S3_Uploads::get_instance();
 }
